@@ -2,7 +2,13 @@
 import { useState } from 'react'
 import SquareUseState from './SquareUseState'
 
-export default function Board(props) {
+type BoardProps = {
+  xIsNext: boolean;
+  squares: string[];
+  onPlay: (param: any) => void
+}
+
+export default function Board(props: BoardProps) {
   const { xIsNext, squares, onPlay } = props
 
   function handleClick(i: number) {
