@@ -3,12 +3,22 @@ import { useState } from 'react'
 import SquareUseState from './SquareUseState'
 
 export default function Board() {
+  const [xIsNext, setXisNext] = useState(true)
   const [squares, setSquares] = useState(Array(9).fill(""))
 
   function handleClick(i: number) {
+    //マスがすでに埋まっている場合は早期リターン
+    if (squares[i]) {
+      return
+    }
     const nextSquares = squares.slice();
-    nextSquares[i] = "X";
+    if (xIsNext) {
+      nextSquares[i] = "X";
+    } else {
+      nextSquares[i] = "O";
+    }
     setSquares(nextSquares);
+    setXisNext(!xIsNext);
     console.log('nextSquares', nextSquares)
   }
   return (
