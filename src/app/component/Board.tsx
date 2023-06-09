@@ -5,12 +5,12 @@ import SquareUseState from './SquareUseState'
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(""))
 
-  function handleClick(i) {
+  function handleClick(i: number) {
     const nextSquares = squares.slice();
     nextSquares[i] = "X";
     setSquares(nextSquares);
     console.log('nextSquares', nextSquares)
-  }  
+  }
   return (
     <>
       <div className="board-row">

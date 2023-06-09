@@ -1,9 +1,12 @@
 'use client';
 //親：Board->子：Square
 
-import { useState } from "react";
+type SquareProps = {
+  value: string;
+  onSquareClick: () => void
+}
 
-export default function Square(props) {
+export default function Square(props: SquareProps) {
 
   return (
     <button
