@@ -2,9 +2,8 @@
 import { useState } from 'react'
 import SquareUseState from './SquareUseState'
 
-export default function Board() {
-  const [xIsNext, setXisNext] = useState(true)
-  const [squares, setSquares] = useState(Array(9).fill(""))
+export default function Board(props) {
+  const { xIsNext, squares, onPlay } = props
 
   function handleClick(i: number) {
     //マスがすでに埋まっている または calculateWinner()が成立する場合は早期リターン
@@ -17,8 +16,7 @@ export default function Board() {
     } else {
       nextSquares[i] = "O";
     }
-    setSquares(nextSquares);
-    setXisNext(!xIsNext);
+    onPlay(nextSquares);
     console.log('nextSquares', nextSquares)
   }
 
